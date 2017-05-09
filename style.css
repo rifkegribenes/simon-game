@@ -1,0 +1,92 @@
+.gameboard {
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -300px;
+    text-align: center;
+    border-radius: 100%;
+    border: 1px solid gray;
+}
+
+.game-btn {
+    width:47%;
+     height:47%;
+    position: absolute;
+}
+
+.controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 30%;
+    margin: -15% 0 0 -15%;
+    border-radius: 100%;
+    background: white;
+
+}
+.start {
+        width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 46%;
+    margin: -15px 0 0 -50px;
+}
+.tr{
+   margin: 2% 0 0 51%;
+     border-radius: 0 100% 0 0;
+    background-color: rgb(191, 63, 63) /* red b-0*/
+}
+.br {
+    margin: 51% 0 0 51%;
+     border-radius: 0 0 100% 0;
+    background-color: rgb(63, 63, 191) /* blue  b-1*/
+}
+.tl {
+   margin: 2% 0 0 2%;
+     border-radius: 100% 0 0 0;
+    background-color: rgb(63, 191, 63); /* green b-2*/
+}
+.bl {
+    margin: 51% 0 0 2%;
+     border-radius: 0 0 0 100%;
+    background-color: rgb(249, 249, 5) /* yellow b-3*/
+}
+
+.lit-0 { /* green */
+    background: rgb(255, 255, 255); /* Old Browsers */
+background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(63,191,63)); /*Safari 5.1-6*/
+background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(63,191,63)); /*Opera 11.1-12*/
+background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(63,191,63)); /*Fx 3.6-15*/
+background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(63,191,63)); /*Standard*/
+}
+
+.lit-1 { /*red*/
+    background: rgb(255, 255, 255); /* Old Browsers */
+background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(191,63,63)); /*Safari 5.1-6*/
+background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(191,63,63)); /*Opera 11.1-12*/
+background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(191,63,63)); /*Fx 3.6-15*/
+background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(191,63,63)); /*Standard*/
+}
+
+.lit-2 { /* blue */
+    background: rgb(255, 255, 255); /* Old Browsers */
+background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(63,63,191)); /*Safari 5.1-6*/
+background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(63,63,191)); /*Opera 11.1-12*/
+background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(63,63,191)); /*Fx 3.6-15*/
+background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(63,63,191)); /*Standard*/
+}
+
+.lit-3 { /* yellow */
+    background: rgb(255, 255, 255); /* Old Browsers */
+background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(249,249,5)); /*Safari 5.1-6*/
+background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(249,249,5)); /*Opera 11.1-12*/
+background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(249,249,5)); /*Fx 3.6-15*/
+background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(249,249,5)); /*Standard*/
+}
+
+
+
