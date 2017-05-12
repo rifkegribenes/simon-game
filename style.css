@@ -13,7 +13,7 @@
 
 .game-btn {
     width:47%;
-     height:47%;
+    height:47%;
     position: absolute;
 }
 
@@ -57,36 +57,22 @@
 }
 
 .lit-0 { /* green */
-    background: rgb(255, 255, 255); /* Old Browsers */
-background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(63,191,63)); /*Safari 5.1-6*/
-background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(63,191,63)); /*Opera 11.1-12*/
-background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(63,191,63)); /*Fx 3.6-15*/
-background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(63,191,63)); /*Standard*/
+background-color: rgba(63, 191, 63, .7);
 }
 
 .lit-1 { /*red*/
-    background: rgb(255, 255, 255); /* Old Browsers */
-background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(191,63,63)); /*Safari 5.1-6*/
-background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(191,63,63)); /*Opera 11.1-12*/
-background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(191,63,63)); /*Fx 3.6-15*/
-background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(191,63,63)); /*Standard*/
+background-color: rgba(191, 63, 63, .7);
 }
 
 .lit-2 { /* blue */
-    background: rgb(255, 255, 255); /* Old Browsers */
-background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(63,63,191)); /*Safari 5.1-6*/
-background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(63,63,191)); /*Opera 11.1-12*/
-background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(63,63,191)); /*Fx 3.6-15*/
-background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(63,63,191)); /*Standard*/
+background-color: rgba(63, 63, 191, .7);
 }
 
 .lit-3 { /* yellow */
-    background: rgb(255, 255, 255); /* Old Browsers */
-background: -webkit-radial-gradient(center,rgb(255, 255, 255),rgb(249,249,5)); /*Safari 5.1-6*/
-background: -o-radial-gradient(center,rgb(255, 255, 255),rgb(249,249,5)); /*Opera 11.1-12*/
-background: -moz-radial-gradient(center,rgb(255, 255, 255),rgb(249,249,5)); /*Fx 3.6-15*/
-background: radial-gradient(ellipse at center, rgb(255, 255, 255), rgb(249,249,5)); /*Standard*/
+background-color: rgba(249, 249, 5, .7);
 }
+
+/*add outer glow, texture? sound, check other game styles. */
 
 
 

@@ -3,26 +3,57 @@ $( document ).ready(function() {
 var compMoves = [],
     humMoves = [],
     state = 'start',
-    turn = 'c';
+    comp = true,
+    compMove = null,
+    humMove = null;
 
 const newCompMove = () => {
-    let nextMove = Math.floor(Math.random() * 4);
-    compMoves.push(nextMove);
-    console.log(compMoves);
+    compMove = Math.floor(Math.random() * 4);
+    compMoves.push(compMove);
+    console.log('compMove= ' + compMove);
     timeout([0,compMoves.length], 1, function(i){
-    lightUp(i);
+    lightUp(i, compMoves);
 });
     switchTurn();
 };
 
 const switchTurn = () => {
-    turn=='c'? turn=='h':turn=='c';
+comp = !comp;
+    console.log('////////////////////////SWITCH//////////////');
 }
 
-// function that checks state/turn, makes button divs clickable, tracks human input & pushes to array, lights up as pressed, checks if matches computer after each turn.
 
+$('.game-btn').click(function() {
+    if (!comp && humMoves.length <= compMoves.length) {
+        var humMove = parseInt($(this).attr('id'));
+        lightUp(humMoves.length-1, humMoves);
+        console.log('humMove = ' + humMove);
+        humMoves.push(humMove);
+        var idx = humMoves.length-1
+        if (humMoves[idx] !== compMoves[idx]) {
+            console.log('you lose');
+            resetGame();
+            return;
+        }
+    }
+    if (humMoves.length == compMoves.length) {
+        console.log('humMoves = ' + humMoves);
+        console.log('compMoves = ' + compMoves);
+        switchTurn();
+        humMoves = [];
+        newCompMove();
+    }
+});
 
+const resetGame = () => {
+    compMoves = [];
+    humMoves = [];
+    state = 'start';
+    comp = true;
+    compMove = null;
+    humMove = null;
 
+}
 
 const timeout = (range, time, callback) => {
     var i = range[0];
@@ -39,12 +70,10 @@ const timeout = (range, time, callback) => {
     }
 }
 
-const lightUp = (i) => {
-    $('#b-'+compMoves[i]).addClass('lit-'+compMoves[i]);
-            console.log('lit-'+compMoves[i]);
+const lightUp = (ix, arr) => {
+    $('#'+arr[ix]).addClass('lit-'+arr[ix]);
     setTimeout(function(){
-        $('#b-'+compMoves[i]).removeClass('lit-'+compMoves[i]);
-            console.log('lit-'+compMoves[i] +' removed');
+        $('#'+arr[ix]).removeClass('lit-'+arr[ix]);
         }, 500);
 }
 
