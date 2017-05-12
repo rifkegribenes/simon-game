@@ -10,7 +10,7 @@ var compMoves = [],
 const newCompMove = () => {
     compMove = Math.floor(Math.random() * 4);
     compMoves.push(compMove);
-    console.log('compMove= ' + compMove);
+    $('.counter').text(compMoves.length);
     timeout([0,compMoves.length], 1, function(i){
     lightUp(i, compMoves);
 });
@@ -26,14 +26,17 @@ comp = !comp;
 $('.game-btn').click(function() {
     if (!comp && humMoves.length <= compMoves.length) {
         var humMove = parseInt($(this).attr('id'));
-        lightUp(humMoves.length-1, humMoves);
-        console.log('humMove = ' + humMove);
         humMoves.push(humMove);
         var idx = humMoves.length-1
+        lightUp(idx, humMoves);
         if (humMoves[idx] !== compMoves[idx]) {
-            console.log('you lose');
-            resetGame();
-            return;
+             console.log('You lose');
+           $('.message').text('You lose');
+            setTimeout(function(){
+                resetGame();
+                }, 2000);
+                            return;
+
         }
     }
     if (humMoves.length == compMoves.length) {
@@ -41,7 +44,9 @@ $('.game-btn').click(function() {
         console.log('compMoves = ' + compMoves);
         switchTurn();
         humMoves = [];
+        setTimeout(function(){
         newCompMove();
+        }, 2000);
     }
 });
 
@@ -52,6 +57,8 @@ const resetGame = () => {
     comp = true;
     compMove = null;
     humMove = null;
+    $('.counter').text('');
+    $('.message').text('');
 
 }
 

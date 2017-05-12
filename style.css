@@ -28,13 +28,25 @@
     background: white;
 
 }
-.start {
-        width: 100px;
+.start, .counter, .message {
+    width: 100px;
     height: 30px;
     position: absolute;
     top: 46%;
     margin: -15px 0 0 -50px;
 }
+
+.counter {
+    top: 23%;
+    width: 40px;
+    left: 66%;
+}
+
+.message {
+    top: 75%;
+    left: 50%;
+}
+
 .tr{
    margin: 2% 0 0 51%;
      border-radius: 0 100% 0 0;
