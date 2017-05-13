@@ -5,7 +5,10 @@ var compMoves = [],
     state = 'start',
     comp = true,
     compMove = null,
-    humMove = null;
+    humMove = null,
+    strict = false,
+    hTry = false;
+
 
 const newCompMove = () => {
     compMove = Math.floor(Math.random() * 4);
@@ -13,32 +16,67 @@ const newCompMove = () => {
     $('.counter').text(compMoves.length);
     timeout([0,compMoves.length], 1, function(i){
     lightUp(i, compMoves);
+        hTry = false;
 });
     switchTurn();
 };
 
 const switchTurn = () => {
 comp = !comp;
-    console.log('////////////////////////SWITCH//////////////');
+    if(comp) {
+    console.log('computer turn');
+    } else {
+     console.log('your turn');
+    }
 }
+
+const toggleStrict = () => {
+    strict =!strict;
+}
+
+$('.checkbox').click(function(){
+    toggleStrict();
+    console.log('strict= '+strict);
+})
 
 
 $('.game-btn').click(function() {
+    $('.message').text('');
     if (!comp && humMoves.length <= compMoves.length) {
         var humMove = parseInt($(this).attr('id'));
         humMoves.push(humMove);
         var idx = humMoves.length-1
-        lightUp(idx, humMoves);
+        lightUpOne(humMove);
+        if(strict || hTry){
         if (humMoves[idx] !== compMoves[idx]) {
+            console.log('humMoves = ' + humMoves);
+        console.log('compMoves = ' + compMoves);
              console.log('You lose');
            $('.message').text('You lose');
             setTimeout(function(){
                 resetGame();
                 }, 2000);
                             return;
+        }
+        } else {
+            if (humMoves[idx] !== compMoves[idx]) {
+             console.log('Try again!');
+           $('.message').text('Watch and try again');
+                humMoves = [];
+                hTry = true;
+           setTimeout(function(){
+        timeout([0,compMoves.length], 1, function(i){
+    lightUp(i, compMoves);
+ });
+        }, 1500);
+                return;
+    }
+
 
         }
-    }
+  // ///////// add you lose if more than 10 sec between moves
+        }
+
     if (humMoves.length == compMoves.length) {
         console.log('humMoves = ' + humMoves);
         console.log('compMoves = ' + compMoves);
@@ -59,6 +97,10 @@ const resetGame = () => {
     humMove = null;
     $('.counter').text('');
     $('.message').text('');
+    $('.start').text('start');
+    $('.toggle').prop('checked', false);
+    srict = false;
+    hTry = false;
 
 }
 
@@ -84,8 +126,16 @@ const lightUp = (ix, arr) => {
         }, 500);
 }
 
+const lightUpOne = (num) => {
+    $('#'+num).addClass('lit-'+num);
+    setTimeout(function(){
+        $('#'+num).removeClass('lit-'+num);
+        }, 500);
+}
+
 $('.start').click(function() {
                 newCompMove();
+    $('.start').text('restart');
 });
 
 });
