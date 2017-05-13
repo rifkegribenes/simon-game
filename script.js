@@ -74,10 +74,11 @@ $('.game-btn').click(function() {
 
 
         }
-  // ///////// add you lose if more than 10 sec between moves
+  // ///////// add you lose if more than 10 sec between moves, add sounds, add speed up as counter increases, var difficulty levels?
         }
 
     if (humMoves.length == compMoves.length) {
+        if (humMoves.length < 20) {
         console.log('humMoves = ' + humMoves);
         console.log('compMoves = ' + compMoves);
         switchTurn();
@@ -85,6 +86,14 @@ $('.game-btn').click(function() {
         setTimeout(function(){
         newCompMove();
         }, 2000);
+        }
+         else if (humMoves.length === 20) {
+            console.log('You win!');
+           $('.message').text('You win!');
+            setTimeout(function(){
+                resetGame();
+                }, 2000);
+    }
     }
 });
 
