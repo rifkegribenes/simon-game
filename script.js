@@ -1,3 +1,6 @@
+  // ///////// add you lose if more than 10 sec between moves, add sounds, add speed up as counter increases, var difficulty levels? high score counter?
+
+
 $( document ).ready(function() {
 
 var compMoves = [],
@@ -74,7 +77,6 @@ $('.game-btn').click(function() {
 
 
         }
-  // ///////// add you lose if more than 10 sec between moves, add sounds, add speed up as counter increases, var difficulty levels?
         }
 
     if (humMoves.length == compMoves.length) {
