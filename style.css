@@ -1,13 +1,3 @@
-/*match colors to cp example (darken start versions)
-add height, texture to pads
-black outline
-game name
-counter font
-message font
-high score counter?
-*/
-
-
 .gameboard {
     width: 600px;
     height: 600px;
@@ -18,13 +8,13 @@ high score counter?
     margin-left: -300px;
     text-align: center;
     border-radius: 100%;
-    background: black;
+    border: 1px solid gray;
 }
 
 .game-btn {
-    width:60%;
-    height:auto;
-position: absolute;
+    width:47%;
+    height:47%;
+    position: absolute;
 }
 
 .controls {
@@ -33,10 +23,9 @@ position: absolute;
     left: 50%;
     width: 40%;
     height: 40%;
-    margin: -24% 0 0 -24%;
+    margin: -20% 0 0 -20%;
     border-radius: 100%;
     background: white;
-    border: 24px solid black;
 
 }
 .start, .counter, .message {
@@ -59,36 +48,40 @@ position: absolute;
 }
 
 .tr{
-
-    fill: #9f0f17; /* red 0*/
+   margin: 2% 0 0 51%;
+     border-radius: 0 100% 0 0;
+    background-color: rgb(191, 63, 63) /* red b-0*/
 }
 .br {
-margin-top: 48%;
-    fill: #094a8f; /* blue  1*/
+    margin: 51% 0 0 51%;
+     border-radius: 0 0 100% 0;
+    background-color: rgb(63, 63, 191) /* blue  b-1*/
 }
 .tl {
-    margin-left: -48%;
-    fill: #00a74a; /* green 2*/
+   margin: 2% 0 0 2%;
+     border-radius: 100% 0 0 0;
+    background-color: rgb(63, 191, 63); /* green b-2*/
 }
 .bl {
-    fill: #cca707; /* yellow 3*/
-    margin: 48% 0 0 -48%;
+    margin: 51% 0 0 2%;
+     border-radius: 0 0 0 100%;
+    background-color: rgb(249, 249, 5) /* yellow b-3*/
 }
 
 .lit-0 { /* green */
-fill: #13ff7c;
+background-color: rgba(63, 191, 63, .7);
 }
 
 .lit-1 { /*red*/
-fill: #ff4c4c;
+background-color: rgba(191, 63, 63, .7);
 }
 
 .lit-2 { /* blue */
-fill: #1c8cff;
+background-color: rgba(63, 63, 191, .7);
 }
 
 .lit-3 { /* yellow */
-fill: #fed93f;
+background-color: rgba(249, 249, 5, .5);
 }
 
 .strict {
