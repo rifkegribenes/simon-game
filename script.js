@@ -1,21 +1,33 @@
-  // ///////// add you lose if more than 10 sec between moves, add sounds, add speed up as counter increases, var difficulty levels?
+  // ///////// add you lose if more than 10 sec between moves, add sounds, add speed up as counter increases, var difficulty levels?. make pads unclickable until start button and durign comp turn.
 
 $( document ).ready(function() {
 
 var compMoves = [],
     humMoves = [],
-    state = 'start',
+    state = 'off',
     comp = true,
     compMove = null,
     humMove = null,
     strict = false,
     hTry = false;
 
+    var sounds = [
+  new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+  new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+  new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+  new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')];
+
+   const stopSounds = () => {
+
+    sounds.forEach(function(sound) {
+        sound.pause();
+    });
+}
 
 const newCompMove = () => {
     compMove = Math.floor(Math.random() * 4);
     compMoves.push(compMove);
-    $('.counter').text(compMoves.length);
+    $('.counter').html(compMoves.length);
     timeout([0,compMoves.length], 1, function(i){
     lightUp(i, compMoves);
         hTry = false;
@@ -34,16 +46,23 @@ comp = !comp;
 
 const toggleStrict = () => {
     strict =!strict;
+    if (strict) {
+        console.log('should add class');
+        $('.strict').addClass('lit-3');
+    } else {
+        $('.strict').removeClass('lit-3');
+    }
 }
 
-$('.checkbox').click(function(){
+$('.strict').click(function(){
+    console.log('click strict');
     toggleStrict();
     console.log('strict= '+strict);
 })
 
 
 $('.game-btn').click(function() {
-    $('.message').text('');
+    stopSounds();
     if (!comp && humMoves.length <= compMoves.length) {
         var humMove = parseInt($(this).attr('id'));
         humMoves.push(humMove);
@@ -54,7 +73,7 @@ $('.game-btn').click(function() {
             console.log('humMoves = ' + humMoves);
         console.log('compMoves = ' + compMoves);
              console.log('You lose');
-           $('.message').text('You lose');
+           $('.counter').html('<span class="msg">Game over</span>');
             setTimeout(function(){
                 resetGame();
                 }, 2000);
@@ -63,7 +82,16 @@ $('.game-btn').click(function() {
         } else {
             if (humMoves[idx] !== compMoves[idx]) {
              console.log('Try again!');
-           $('.message').text('Watch and try again');
+
+                var blinkCount = 0;
+function timerMethod() {
+    blinkCount++;
+    if(blinkCount > 3) clearInterval(timerId);
+    $( ".blink" ).fadeToggle();
+}
+var timerId = setInterval(timerMethod, 500);
+
+           $('.counter').html('<span class="blink">! ! !</span>');
                 humMoves = [];
                 hTry = true;
            setTimeout(function(){
@@ -91,7 +119,7 @@ $('.game-btn').click(function() {
         }
          else if (humMoves.length === 20) {
             console.log('You win!');
-           $('.message').text('You win!');
+           $('.counter').html('<span class="msg">You win!</span>');
             setTimeout(function(){
                 resetGame();
                 }, 2000);
@@ -102,12 +130,11 @@ $('.game-btn').click(function() {
 const resetGame = () => {
     compMoves = [];
     humMoves = [];
-    state = 'start';
+    state = 'off';
     comp = true;
     compMove = null;
     humMove = null;
-    $('.counter').text('');
-    $('.message').text('');
+    $('.counter').html('');
     $('.start').text('start');
     $('.toggle').prop('checked', false);
     srict = false;
@@ -131,7 +158,9 @@ const timeout = (range, time, callback) => {
 }
 
 const lightUp = (ix, arr) => {
+    stopSounds();
     $('#'+arr[ix]).addClass('lit-'+arr[ix]);
+    sounds[arr[ix]].play();
     setTimeout(function(){
         $('#'+arr[ix]).removeClass('lit-'+arr[ix]);
         }, 500);
@@ -139,14 +168,23 @@ const lightUp = (ix, arr) => {
 
 const lightUpOne = (num) => {
     $('#'+num).addClass('lit-'+num);
+    sounds[num].play();
     setTimeout(function(){
         $('#'+num).removeClass('lit-'+num);
+        sounds[num].pause();
         }, 500);
 }
 
 $('.start').click(function() {
-                newCompMove();
-    $('.start').text('restart');
+    if (state == 'off')
+              {  newCompMove();
+    $('.start').text('reset');
+                   state = 'on';
+              } else {
+                  resetGame();
+              }
+
+
 });
 
 });
