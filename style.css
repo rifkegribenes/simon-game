@@ -1,8 +1,5 @@
-/*
-add round buttons with led lights for strict mode, 7-part comp font red LED display for message, counter
-*/
 body {
-    background:  #fdf6e3;
+    background:  #faedcb;
 }
 
 .gameboard {
@@ -47,14 +44,15 @@ body {
 }
 
 .start, .strict {
-        width: 35%;
+      width: 35%;
     border-radius: .8vmin;
     height: 14%;
-    font-size: 2.5vmin;
+    font-size: 2vmin;
     color: white;
     text-transform: uppercase;
-    padding: 1vmin .3vmin 0 .3vmin;
-    font-family: sans-serif;
+    padding: 1.25vmin .3vmin 0 .3vmin;
+    font-family: 'Open Sans';
+    letter-spacing: 2px;
     cursor: pointer;
     position: absolute;
     top: 43%;
