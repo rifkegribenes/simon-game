@@ -1,5 +1,3 @@
-  // ///////// add you lose if more than 10 sec between moves, check/fix sounds, add losing sound & intro song, add speed up as counter increases, make pads unclickable until start button and durign comp turn. test on mobile, clean up code,  turn! this! fucker! in!
-
 $( document ).ready(function() {
 
 var compMoves = [],
@@ -13,12 +11,12 @@ var compMoves = [],
     intro = false;
 
     var sounds = [
-        '/sounds/0_green.mp3',
-        '/sounds/1_red.mp3',
-        '/sounds/2_blue.mp3',
-        '/sounds/3_yellow.mp3',
-        '/sounds/4_wrong.mp3',
-        '/sounds/5_simon_intro.mp3'];
+        'https://raw.githubusercontent.com/rifkegribenes/simon-game/master/sounds/0_green.mp3',
+        'https://raw.githubusercontent.com/rifkegribenes/simon-game/master/sounds/1_red.mp3',
+        'https://raw.githubusercontent.com/rifkegribenes/simon-game/master/sounds/2_blue.mp3',
+        'https://raw.githubusercontent.com/rifkegribenes/simon-game/master/sounds/3_yellow.mp3',
+        'https://raw.githubusercontent.com/rifkegribenes/simon-game/master/sounds/4_wrong.mp3',
+        'https://raw.githubusercontent.com/rifkegribenes/simon-game/master/sounds/5_simon_intro.mp3'];
 
    const playSound = (val) => {
     var sound = document.createElement('audio');
